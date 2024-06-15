@@ -6,7 +6,8 @@ const App = () => {
   const [current, setCurrent] = useState("");
   const [allData, setAllData] = useState([]);
 
-  async function handleSearch() {
+  async function handleSearch(e) {
+    e.preventDefault();
     const res = await fetch(`http://www.omdbapi.com/?s=${current}&apikey=f732e5c0`);
     const data = await res.json();
     if (data.Search) {
@@ -18,9 +19,9 @@ const App = () => {
 
   return (
     <div>
-      <form>
+      <form onSubmit={handleSearch}>
       <input value={current} placeholder="Search Movie by title" onChange={(event) => { setCurrent(event.target.value) }} />
-      <span><button onClick={handleSearch}>Search</button></span></form>
+      <span><button type="submit" >Search</button></span></form>
       {
         allData.length === 0 ? <p className="error">Invalid movie name. Please try again.</p> :
           allData.map((movie) => {
