@@ -27,8 +27,8 @@ const App = () => {
           allData.map((movie) => {
             return (
               <div key={movie.imdbID}>
-                <ul><li>{movie.Title} ({movie.Year})</li>
-                <li><img src={movie.Poster} alt="movie poster"/></li></ul>
+                <ul><li>{movie.Title} ({movie.Year})
+                <img src={movie.Poster} alt="movie poster"/></li></ul>
               </div>
             );
           })
