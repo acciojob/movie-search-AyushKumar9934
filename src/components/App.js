@@ -18,15 +18,16 @@ const App = () => {
 
   return (
     <div>
+      <form>
       <input value={current} placeholder="Search Movie by title" onChange={(event) => { setCurrent(event.target.value) }} />
-      <span><button onClick={handleSearch}>Search</button></span>
+      <span><button onClick={handleSearch}>Search</button></span></form>
       {
         allData.length === 0 ? <p className="error">Invalid movie name. Please try again.</p> :
           allData.map((movie) => {
             return (
               <div key={movie.imdbID}>
-                <ul><li>{movie.Title} ({movie.Year})</li></ul>
-                <img src={movie.Poster} alt="movie poster"/>
+                <ul><li>{movie.Title} ({movie.Year})</li>
+                <li><img src={movie.Poster} alt="movie poster"/></li></ul>
               </div>
             );
           })
